@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Physiotherapy Clinic Dashboard</title>
-    <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
     <style>
       body {
@@ -29,28 +28,37 @@
       .form-group {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
         margin-bottom: 20px;
-      }
-      input,
-      button {
-        padding: 12px;
-        font-size: 16px;
-        border-radius: 5px;
+        align-items: center;
       }
       input {
+        width: 80%;
+        max-width: 300px;
+        padding: 8px;
+        font-size: 14px;
         border: 1px solid #ccc;
-        width: 100%;
+        border-radius: 5px;
+        text-align: left;
       }
       button {
+        width: 150px;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 5px;
         background-color: #1976d2;
         color: white;
         border: none;
         cursor: pointer;
-        width: 100%;
+        text-align: center;
+        margin: 5px;
       }
       button:hover {
         background-color: #1565c0;
+      }
+      #newEntryBtn {
+        margin-top: 10px;
+        display: none;
       }
       .success-message {
         text-align: center;
@@ -62,12 +70,14 @@
         .container {
           padding: 15px;
         }
-        button {
-          font-size: 14px;
-          padding: 10px;
-        }
         input {
-          font-size: 14px;
+          width: 90%;
+          font-size: 13px;
+        }
+        button {
+          width: 130px;
+          font-size: 12px;
+          padding: 6px;
         }
       }
     </style>
@@ -86,7 +96,7 @@
       <p id="successMessage" class="success-message">
         Data added successfully!
       </p>
-      <button id="newEntryBtn" style="display: none" onclick="resetForm()">
+      <button id="newEntryBtn" onclick="resetForm()">
         Click here to add new data
       </button>
       <button onclick="location.href='records.html'">View Records</button>
