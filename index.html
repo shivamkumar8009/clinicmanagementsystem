@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Physiotherapy Clinic Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #e3f2fd;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 90%;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+      }
+      h1,
+      h2 {
+        text-align: center;
+        color: #1565c0;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      input,
+      button {
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      input {
+        border: 1px solid #ccc;
+        width: 100%;
+      }
+      button {
+        background-color: #1976d2;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+      button:hover {
+        background-color: #1565c0;
+      }
+      .success-message {
+        text-align: center;
+        color: green;
+        display: none;
+        margin-top: 10px;
+      }
+      @media (max-width: 600px) {
+        .container {
+          padding: 15px;
+        }
+        button {
+          font-size: 14px;
+          padding: 10px;
+        }
+        input {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Clinic Dashboard</h1>
+      <h2>Patient Register</h2>
+      <div class="form-group">
+        <input type="date" id="visitDate" />
+        <input type="text" id="patientName" placeholder="Patient Name" />
+        <input type="text" id="problem" placeholder="Patient Problem" />
+        <input type="number" id="feesPaid" placeholder="Fees Paid" />
+        <button onclick="addPatientRecord()">Add Record</button>
+      </div>
+      <p id="successMessage" class="success-message">
+        Data added successfully!
+      </p>
+      <button id="newEntryBtn" style="display: none" onclick="resetForm()">
+        Click here to add new data
+      </button>
+      <button onclick="location.href='records.html'">View Records</button>
+    </div>
+    <script>
+      let patients = JSON.parse(localStorage.getItem("patients")) || [];
+      function addPatientRecord() {
+        const date = document.getElementById("visitDate").value;
+        const name = document.getElementById("patientName").value;
+        const problem = document.getElementById("problem").value;
+        const feesPaid =
+          parseFloat(document.getElementById("feesPaid").value) || 0;
+        if (!date || !name || !problem) {
+          alert("Please fill all fields.");
+          return;
+        }
+        let patient = patients.find((p) => p.name === name);
+        if (!patient) {
+          patient = { name, visits: [], totalPaid: 0 };
+          patients.push(patient);
+        }
+        patient.visits.push({ date, problem, feesPaid });
+        patient.totalPaid += feesPaid;
+        localStorage.setItem("patients", JSON.stringify(patients));
+        document.getElementById("successMessage").style.display = "block";
+        document.getElementById("newEntryBtn").style.display = "block";
+      }
+      function resetForm() {
+        document.getElementById("visitDate").value = "";
+        document.getElementById("patientName").value = "";
+        document.getElementById("problem").value = "";
+        document.getElementById("feesPaid").value = "";
+        document.getElementById("successMessage").style.display = "none";
+        document.getElementById("newEntryBtn").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
