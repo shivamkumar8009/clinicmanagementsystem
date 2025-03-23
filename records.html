@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Patient Records</title>
-    <link rel="stylesheet" href="styles.css" />
     <script defer src="records.js"></script>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+
       body {
-        font-family: "Arial", sans-serif;
+        font-family: "Poppins", sans-serif;
         background-color: #e3f2fd;
         margin: 0;
         padding: 20px;
@@ -31,16 +32,19 @@
         flex-direction: column;
         gap: 10px;
         margin-bottom: 20px;
+        align-items: center;
       }
       button {
-        padding: 12px;
+        padding: 6px;
         background-color: #1976d2;
         color: white;
         border: none;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 14px;
         border-radius: 5px;
-        width: 100%;
+        width: 100px;
+        text-align: center;
+        font-family: "Poppins", sans-serif;
       }
       button:hover {
         background-color: #1565c0;
@@ -54,7 +58,7 @@
       th,
       td {
         border: 1px solid #ddd;
-        padding: 10px;
+        padding: 8px;
         text-align: left;
       }
       th {
@@ -63,25 +67,32 @@
       }
       select,
       input {
-        width: 100%;
-        padding: 10px;
+        width: 120px; /* Reduced width */
+        padding: 6px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        font-size: 16px;
+        font-size: 13px;
         margin-top: 10px;
+        font-family: "Poppins", sans-serif;
+        text-align: center;
       }
       @media (max-width: 600px) {
         .container {
           padding: 15px;
         }
         button {
-          font-size: 14px;
-          padding: 10px;
+          font-size: 12px;
+          padding: 5px;
+          width: 90px;
         }
         th,
         td {
-          padding: 8px;
-          font-size: 14px;
+          padding: 6px;
+          font-size: 12px;
+        }
+        select,
+        input {
+          width: 100px; /* Smaller on mobile */
         }
       }
     </style>
@@ -90,7 +101,7 @@
     <div class="container">
       <h1>Patient Records</h1>
       <div class="button-group">
-        <button onclick="location.href='index.html'">Back to Dashboard</button>
+        <button onclick="location.href='index.html'">Back</button>
       </div>
 
       <h2>Filter Records</h2>
@@ -109,6 +120,8 @@
               <th>Patient Name</th>
               <th>Problem</th>
               <th>Fees Paid</th>
+              <th>Actions</th>
+              <!-- Ensuring button column has color -->
             </tr>
           </thead>
           <tbody id="recordsTable"></tbody>
@@ -117,9 +130,7 @@
 
       <h2>Patient-wise Data</h2>
       <div class="button-group">
-        <button onclick="showPatientDropdown()">
-          Click Here to See Patient-wise Data
-        </button>
+        <button onclick="showPatientDropdown()">Show Patient Data</button>
         <select
           id="patientDropdown"
           onchange="showPatientDetails()"
