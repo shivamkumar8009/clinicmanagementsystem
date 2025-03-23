@@ -40,12 +40,12 @@
         position: absolute;
         top: 15px;
         left: 15px;
-        padding: 6px 10px;
+        padding: 5px 9px;
         background-color: #1976d2;
         color: white;
         border: none;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 12px;
         border-radius: 5px;
       }
       .back-button:hover {
@@ -56,7 +56,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 20px;
+        gap: 15px;
         margin-top: 10px;
         flex-wrap: wrap;
       }
@@ -71,22 +71,22 @@
       }
       select,
       input {
-        width: 150px;
-        padding: 6px;
+        width: 140px;
+        padding: 5px;
         border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 14px;
         text-align: center;
       }
       button {
-        padding: 8px;
+        padding: 7px;
         background-color: #1976d2;
         color: white;
         border: none;
         cursor: pointer;
         font-size: 14px;
         border-radius: 5px;
-        width: 130px;
+        width: 120px;
       }
       button:hover {
         background-color: #1565c0;
@@ -99,21 +99,45 @@
         margin-top: 20px;
       }
       table {
-        width: 90%; /* Reduced width */
+        width: 85%; /* Further reduced width */
         border-collapse: collapse;
       }
       th,
       td {
         border: 1px solid #ddd;
-        padding: 6px; /* Reduced padding */
+        padding: 6px;
         text-align: left;
-        font-size: 13px; /* Reduced font size */
+        font-size: 13px;
       }
       th {
         background-color: #1976d2;
         color: white;
-        font-size: 15px; /* Slightly smaller headers */
+        font-size: 14px;
         font-weight: 500;
+      }
+      /* Adjust Specific Column Widths */
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 50px; /* Reduced Date column */
+        text-align: center;
+      }
+      th:nth-child(5),
+      td:nth-child(5) {
+        width: 80px; /* Reduced Actions column */
+        text-align: center;
+      }
+      /* Smaller Delete Button */
+      .delete-btn {
+        padding: 3px 6px;
+        font-size: 12px;
+        background-color: red;
+        border: none;
+        color: white;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .delete-btn:hover {
+        background-color: darkred;
       }
       /* Centering the Patient-wise Table */
       .center-table {
@@ -122,27 +146,27 @@
         margin-top: 20px;
       }
       .center-table table {
-        width: 80%;
+        width: 75%;
       }
       @media (max-width: 600px) {
         .container {
           padding: 15px;
         }
         .back-button {
-          font-size: 12px;
-          padding: 5px 8px;
+          font-size: 10px;
+          padding: 4px 7px;
         }
         button {
           font-size: 12px;
-          padding: 6px;
-          width: 110px;
+          padding: 5px;
+          width: 100px;
         }
         .filter-group {
           gap: 10px;
         }
         select,
         input {
-          width: 120px;
+          width: 110px;
         }
         .table-container table {
           width: 95%;
@@ -186,7 +210,18 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody id="recordsTable"></tbody>
+          <tbody id="recordsTable">
+            <tr>
+              <td>25</td>
+              <!-- Example: Only shows day, not year -->
+              <td>John Doe</td>
+              <td>Fever</td>
+              <td>$50</td>
+              <td>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
 
