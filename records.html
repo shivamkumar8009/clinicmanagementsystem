@@ -99,7 +99,7 @@
         margin-top: 20px;
       }
       table {
-        width: 85%; /* Further reduced width */
+        width: 80%; /* Further reduced width */
         border-collapse: collapse;
       }
       th,
@@ -118,12 +118,12 @@
       /* Adjust Specific Column Widths */
       th:nth-child(1),
       td:nth-child(1) {
-        width: 50px; /* Reduced Date column */
+        width: 70px; /* Adjusted Date column */
         text-align: center;
       }
       th:nth-child(5),
       td:nth-child(5) {
-        width: 80px; /* Reduced Actions column */
+        width: 70px; /* Reduced Actions column */
         text-align: center;
       }
       /* Smaller Delete Button */
@@ -138,6 +138,16 @@
       }
       .delete-btn:hover {
         background-color: darkred;
+      }
+      /* Patient Data Section */
+      .button-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15px;
+      }
+      .button-group button {
+        margin-bottom: 10px; /* Added margin below the button */
       }
       /* Centering the Patient-wise Table */
       .center-table {
@@ -212,8 +222,8 @@
           </thead>
           <tbody id="recordsTable">
             <tr>
-              <td>25</td>
-              <!-- Example: Only shows day, not year -->
+              <td>24/03/25</td>
+              <!-- New Date Format -->
               <td>John Doe</td>
               <td>Fever</td>
               <td>$50</td>
