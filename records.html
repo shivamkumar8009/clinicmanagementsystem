@@ -91,22 +91,28 @@
       button:hover {
         background-color: #1565c0;
       }
-      table {
-        width: 100%;
-        border-collapse: collapse;
+      /* Table Styling */
+      .table-container {
+        display: flex;
+        justify-content: center;
+        overflow-x: auto;
         margin-top: 20px;
+      }
+      table {
+        width: 90%; /* Reduced width */
+        border-collapse: collapse;
       }
       th,
       td {
         border: 1px solid #ddd;
-        padding: 10px;
+        padding: 6px; /* Reduced padding */
         text-align: left;
-        font-size: 14px;
+        font-size: 13px; /* Reduced font size */
       }
       th {
         background-color: #1976d2;
         color: white;
-        font-size: 16px;
+        font-size: 15px; /* Slightly smaller headers */
         font-weight: 500;
       }
       /* Centering the Patient-wise Table */
@@ -138,6 +144,9 @@
         input {
           width: 120px;
         }
+        .table-container table {
+          width: 95%;
+        }
         .center-table table {
           width: 95%;
         }
@@ -166,7 +175,7 @@
       </div>
 
       <h2>Monthly & Date-wise Records</h2>
-      <div style="overflow-x: auto">
+      <div class="table-container">
         <table>
           <thead>
             <tr>
