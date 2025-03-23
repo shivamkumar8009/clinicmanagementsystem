@@ -21,30 +21,72 @@
         padding: 20px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         border-radius: 10px;
+        position: relative;
       }
-      h1,
+      h1 {
+        text-align: center;
+        color: #1565c0;
+        font-size: 28px;
+        font-weight: 600;
+      }
       h2 {
         text-align: center;
         color: #1565c0;
+        font-size: 22px;
+        font-weight: 500;
       }
-      .button-group {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 20px;
-        align-items: center;
-      }
-      button {
-        padding: 6px;
+      /* Back Button */
+      .back-button {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        padding: 6px 10px;
         background-color: #1976d2;
         color: white;
         border: none;
         cursor: pointer;
         font-size: 14px;
         border-radius: 5px;
-        width: 100px;
+      }
+      .back-button:hover {
+        background-color: #1565c0;
+      }
+      /* Filters */
+      .filter-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+      .filter-group div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      label {
+        font-size: 14px;
+        font-weight: 500;
+      }
+      select,
+      input {
+        width: 150px;
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
         text-align: center;
-        font-family: "Poppins", sans-serif;
+      }
+      button {
+        padding: 8px;
+        background-color: #1976d2;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 5px;
+        width: 130px;
       }
       button:hover {
         background-color: #1565c0;
@@ -53,63 +95,75 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
-        overflow-x: auto;
       }
       th,
       td {
         border: 1px solid #ddd;
-        padding: 8px;
+        padding: 10px;
         text-align: left;
+        font-size: 14px;
       }
       th {
         background-color: #1976d2;
         color: white;
+        font-size: 16px;
+        font-weight: 500;
       }
-      select,
-      input {
-        width: 120px; /* Reduced width */
-        padding: 6px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 13px;
-        margin-top: 10px;
-        font-family: "Poppins", sans-serif;
-        text-align: center;
+      /* Centering the Patient-wise Table */
+      .center-table {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .center-table table {
+        width: 80%;
       }
       @media (max-width: 600px) {
         .container {
           padding: 15px;
         }
+        .back-button {
+          font-size: 12px;
+          padding: 5px 8px;
+        }
         button {
           font-size: 12px;
-          padding: 5px;
-          width: 90px;
-        }
-        th,
-        td {
           padding: 6px;
-          font-size: 12px;
+          width: 110px;
+        }
+        .filter-group {
+          gap: 10px;
         }
         select,
         input {
-          width: 100px; /* Smaller on mobile */
+          width: 120px;
+        }
+        .center-table table {
+          width: 95%;
         }
       }
     </style>
   </head>
   <body>
     <div class="container">
+      <button class="back-button" onclick="location.href='index.html'">
+        Back
+      </button>
+
       <h1>Patient Records</h1>
-      <div class="button-group">
-        <button onclick="location.href='index.html'">Back</button>
-      </div>
 
       <h2>Filter Records</h2>
-      <label for="monthFilter">Select Month:</label>
-      <input type="month" id="monthFilter" onchange="updateSummary()" />
+      <div class="filter-group">
+        <div>
+          <label for="monthFilter">Select Month:</label>
+          <input type="month" id="monthFilter" onchange="updateSummary()" />
+        </div>
 
-      <label for="dateFilter">Select Date:</label>
-      <input type="date" id="dateFilter" onchange="updateSummary()" />
+        <div>
+          <label for="dateFilter">Select Date:</label>
+          <input type="date" id="dateFilter" onchange="updateSummary()" />
+        </div>
+      </div>
 
       <h2>Monthly & Date-wise Records</h2>
       <div style="overflow-x: auto">
@@ -121,7 +175,6 @@
               <th>Problem</th>
               <th>Fees Paid</th>
               <th>Actions</th>
-              <!-- Ensuring button column has color -->
             </tr>
           </thead>
           <tbody id="recordsTable"></tbody>
@@ -138,7 +191,7 @@
         ></select>
       </div>
 
-      <div style="overflow-x: auto">
+      <div class="center-table">
         <table id="patientTable" style="display: none">
           <thead>
             <tr>
